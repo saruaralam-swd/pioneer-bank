@@ -1,4 +1,10 @@
-body{
+:root {
+  --slateblue: slateblue;
+  --lightsalmon: lightsalmon;
+  --orangered: orangered;
+}
+
+body {
   padding: 100px;
 }
 
@@ -6,18 +12,18 @@ body{
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
 }
 
-#transaction-area{
+#transaction-area {
   display: none;
 }
 
 .deposit {
-  background-color: slateblue;
+  background-color: var(--slateblue);
 }
 
 .withdraw {
-  background-color: lightsalmon;
+  background-color: var(--lightsalmon);
 }
 
-.balances{
-  background-color: orangered;
+.balances {
+  background-color: var(--orangered);
 }

@@ -44,6 +44,7 @@
           </div>
         </div>
       </div>
+
       <div class="row mt-5">
         <div class="col-md-6">
           <div class="submit-area p-4 border rounded">
@@ -67,31 +68,28 @@
       document.getElementById('login').addEventListener('click', () => {
         const loginArea = document.getElementById('login-area');
         loginArea.style.display = 'none';
+
         const transactionArea = document.getElementById('transaction-area');
         transactionArea.style.display = 'block';
       });
 
-      // deposit button event
+      // deposit button event handler
       document.getElementById('addDeposit').addEventListener('click', () => {
-        // const depositAmount = document.getElementById('depositAmount').value;
-
         const depositNumber = getInputNumber('depositAmount');
 
         updateSpanText('currentDeposit', depositNumber);
-
         updateSpanText('currentBalance', depositNumber);
 
         document.getElementById('depositAmount').value = '';
       });
 
-      //withdraw button event
+      //withdraw button event handler
       document.getElementById('addWithdraw').addEventListener('click', () => {
         const withdrawNumber = getInputNumber('withdrawAmount')
 
         updateSpanText('currentWithdraw', withdrawNumber);
-
-        updateSpanTextRemove('currentBalance', withdrawNumber);
-
+        updateSpanText('currentBalance', -1 * withdrawNumber);
+        
         document.getElementById('withdrawAmount').value = '';
       });
 
@@ -102,17 +100,11 @@
         return amountNumber;
       };
 
-      function updateSpanText(id, number) {
+
+      function updateSpanText(id, addedNumber) {
         const current = document.getElementById(id).innerText;
         const currentNumber = parseFloat(current);
-        const totalAmount = number + currentNumber;
-        document.getElementById(id).innerText = totalAmount;
-      };
-      
-      function updateSpanTextRemove(id, num) {
-        const current = document.getElementById(id).innerText;
-        const currentNumber = parseFloat(current); 
-        const totalAmount = currentNumber - num;
+        const totalAmount = addedNumber + currentNumber;
         document.getElementById(id).innerText = totalAmount;
       };
     </script>
